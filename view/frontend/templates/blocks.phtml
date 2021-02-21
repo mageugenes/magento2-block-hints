@@ -1,0 +1,43 @@
+<?php
+
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\Escaper;
+
+/**
+ * @var Template $block
+ * @var Escaper $escaper
+ */
+
+?>
+
+<div id="me-ln-control-block">
+    <div id="me-ln-c-b-title"><?= $escaper->escapeHtml(__('ME BlockHints')) ?></div>
+
+    <div id="mageugenes-blockhints-switch">
+        <label for="mageugenes-blockhints-switch-input">Show block hints</label>
+        <input type="checkbox" id ="mageugenes-blockhints-switch-input">
+    </div>
+</div>
+
+<script>
+    require(['me-ln-hints',
+            'jquery',
+            'jquery/ui',
+            'domReady!'],
+    function(meLnHints, $) {
+        $('#me-ln-control-block').show().draggable();
+
+        meLnHints('debugging-hint-mageugenes-layoutnames');
+
+        $('#mageugenes-blockhints-switch-input').change()
+        $('body').on('change', '#mageugenes-blockhints-switch-input', function (event) {
+
+            if(this.checked) {
+                $('.me-ln-wrapper').show();
+            } else {
+                $('.me-ln-wrapper').hide();
+            }
+        });
+
+    });
+</script>

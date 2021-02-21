@@ -1,0 +1,112 @@
+#me-ln-control-block {
+    position: fixed;
+    bottom: 0;
+    z-index: 999999;
+    width: 280px;
+    height: 100px;
+    background-color: rgba(255, 255, 128, 0.9);
+    border-radius: 4px;
+    border: 2px solid yellow;
+    display: none;
+}
+
+#me-ln-c-b-title {
+    background-color: #000;
+    color: #fff;
+    padding: 4px;
+    text-align: center;
+    cursor: move;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+.debugging-hint-mageugenes-layoutnames,
+.debugging-hint-mageugenes-layoutnames-end {
+    color: #fff;
+    margin-right: 10px;
+    padding: 2px 5px;
+    font: normal 11px Arial;
+    width: fit-content;
+    white-space: nowrap;
+    border-radius: 2px;
+    position: absolute;
+}
+
+.me-ln-name-template {
+    display: none;
+    position: absolute;
+    background-color: black;
+    color: #fff;
+    border: 1px solid yellow;
+    text-transform: none;
+    text-align: left;
+    padding: 2px 5px 2px 5px;
+    font: normal 11px Arial;
+    border-radius: 2px;
+    white-space: nowrap;
+    left: -2px;
+    top: -29px;
+    right: auto;
+}
+
+.me-ln-name-template.me-ln-name-template-show {
+    display: inline-block;
+}
+
+.me-ln-wrapper {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 2px;
+    min-height: 20px;
+    display: none;
+}
+
+.me-ln-wrapper.me-ln-active {
+    background-color: rgba(255, 255, 0, 0.3);
+    border: 1px solid yellow;
+}
+
+/* Enable-disable button */
+
+.me-ln-control-block .switch-button-label {
+    float: left;
+    font-size: 10pt;
+
+.me-ln-control-block .me-ln-control-block     cursor: pointer;
+}
+
+.me-ln-control-block .switch-button-label.off {
+    color: #adadad;
+}
+
+.me-ln-control-block .switch-button-label.on {
+    color: #0088CC;
+}
+.me-ln-control-block .switch-button-background {
+    float: left;
+    position: relative;
+    background: #ccc;
+    border: 1px solid #aaa;
+    margin: 1px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.me-ln-control-block .switch-button-button {
+    position: absolute;
+    left: -1px;
+    top : -1px;
+    background: #FAFAFA;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+#mageugenes-blockhints-switch {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#mageugenes-blockhints-switch label {
+    cursor: pointer;
+}
+
+
