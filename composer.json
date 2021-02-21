@@ -1,0 +1,28 @@
+{
+    "name": "mageugenes/blockhints",
+    "description": "Block Hints extension for Magento 2",
+    "type": "magento2-module",
+    "license": "MIT",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "mageugenes",
+            "email": "support@mageugenes.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Mageugenes\\BlockHints\\": ""
+        }
+    }
+}
