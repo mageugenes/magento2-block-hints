@@ -1,43 +1,47 @@
 <?php
 
-use Magento\Framework\View\Element\Template;
 use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
 
 /**
  * @var Template $block
  * @var Escaper $escaper
  */
 
+$moduleIsEnabled = $this->helper('Mageugenes\BlockHints\Helper\Data')
+                        ->getConfigValue('mageugenes_dev/block_hints/enable_block_hints_for_storefront');
 ?>
 
-<div id="me-ln-control-block">
-    <div id="me-ln-c-b-title"><?= $escaper->escapeHtml(__('ME BlockHints')) ?></div>
+<?php if ($moduleIsEnabled): ?>
+    <div id="me-ln-control-block">
+        <div id="me-ln-c-b-title"><?= $escaper->escapeHtml(__('ME BlockHints')) ?></div>
 
-    <div id="mageugenes-blockhints-switch">
-        <label for="mageugenes-blockhints-switch-input">Enable block hints</label>
-        <input type="checkbox" id ="mageugenes-blockhints-switch-input" checked>
+        <div id="mageugenes-blockhints-switch">
+            <label for="mageugenes-blockhints-switch-input">Enable block hints</label>
+            <input type="checkbox" id ="mageugenes-blockhints-switch-input" checked>
+        </div>
     </div>
-</div>
 
-<script>
-    require(['me-ln-hints',
-            'jquery',
-            'jquery/ui',
-            'domReady!'],
-    function(meLnHints, $) {
-        $('#me-ln-control-block').show().draggable();
+    <script>
+        require(['me-ln-hints',
+                'jquery',
+                'jquery/ui',
+                'domReady!'],
+        function(meLnHints, $) {
+            $('#me-ln-control-block').show().draggable();
 
-        meLnHints('debugging-hint-mageugenes-layoutnames');
+            meLnHints('debugging-hint-mageugenes-layoutnames');
 
-        $('#mageugenes-blockhints-switch-input').change()
-        $('body').on('change', '#mageugenes-blockhints-switch-input', function (event) {
+            $('#mageugenes-blockhints-switch-input').change()
+            $('body').on('change', '#mageugenes-blockhints-switch-input', function (event) {
 
-            if(this.checked) {
-                $('.me-ln-wrapper').show();
-            } else {
-                $('.me-ln-wrapper').hide();
-            }
+                if(this.checked) {
+                    $('.me-ln-wrapper').show();
+                } else {
+                    $('.me-ln-wrapper').hide();
+                }
+            });
+
         });
-
-    });
-</script>
+    </script>
+<?php endif; ?>

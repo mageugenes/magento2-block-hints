@@ -1,0 +1,24 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mageugenes_tab" translate="label" sortOrder="0">
+            <label>Mageugenes.com</label>
+        </tab>
+
+        <section id="mageugenes_dev" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Developer</label>
+            <tab>mageugenes_tab</tab>
+            <resource>Mageugenes_BlockHints::config</resource>
+            <group id="block_hints" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Block Hints</label>
+                <field id="version" translate="label comment" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Mageugenes\BlockHints\Block\Adminhtml\System\Config\Form\Info</frontend_model>
+                </field>
+                <field id="enable_block_hints_for_storefront" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Block Hints for Storefront</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
