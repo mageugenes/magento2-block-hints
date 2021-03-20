@@ -7,7 +7,6 @@
     background-color: rgba(255, 255, 128, 0.9);
     border-radius: 4px;
     border: 2px solid yellow;
-    display: none;
 }
 
 #me-ln-c-b-title {
@@ -15,7 +14,6 @@
     color: #fff;
     padding: 4px;
     text-align: center;
-    cursor: move;
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
 }
@@ -71,8 +69,10 @@
 .me-ln-control-block .switch-button-label {
     float: left;
     font-size: 10pt;
+}
 
-.me-ln-control-block .me-ln-control-block     cursor: pointer;
+.me-ln-control-block #mageugenes-blockhints-switch-input  {
+    cursor: pointer;
 }
 
 .me-ln-control-block .switch-button-label.off {

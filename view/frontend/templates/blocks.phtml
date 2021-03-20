@@ -18,27 +18,39 @@ $moduleIsEnabled = $this->helper('Mageugenes\BlockHints\Helper\Data')
 
         <div id="mageugenes-blockhints-switch">
             <label for="mageugenes-blockhints-switch-input">Enable block hints</label>
-            <input type="checkbox" id ="mageugenes-blockhints-switch-input" checked>
+            <input type="checkbox" id ="mageugenes-blockhints-switch-input">
         </div>
     </div>
 
     <script>
         require(['me-ln-hints',
                 'jquery',
-                'jquery/ui',
+                'jquery/jquery.cookie',
                 'domReady!'],
         function(meLnHints, $) {
-            $('#me-ln-control-block').show().draggable();
 
-            meLnHints('debugging-hint-mageugenes-layoutnames');
+            let showHints = $.cookie('me-ln-wrapper');
+            let isChecked = showHints == 1 ? true : false
 
-            $('#mageugenes-blockhints-switch-input').change()
+            $('#mageugenes-blockhints-switch-input').prop('checked', isChecked);
+
+            meLnHints('debugging-hint-mageugenes-layoutnames', isChecked);
+
+            $('.me-ln-wrapper').hide();
+
+            if(isChecked) {
+                $('.me-ln-wrapper').show().css('display', 'inline-block');
+            } else {
+                $('.me-ln-wrapper').hide();
+            }
+
             $('body').on('change', '#mageugenes-blockhints-switch-input', function (event) {
-
                 if(this.checked) {
-                    $('.me-ln-wrapper').show();
+                    $('.me-ln-wrapper').show().css('display', 'inline-block');;
+                    $.cookie('me-ln-wrapper', 1);
                 } else {
                     $('.me-ln-wrapper').hide();
+                    $.cookie('me-ln-wrapper', 2);
                 }
             });
 

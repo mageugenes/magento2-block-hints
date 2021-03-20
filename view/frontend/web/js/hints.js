@@ -3,7 +3,7 @@ define(['jquery'],
 
         "use strict";
 
-        return function meLnHints(hintClass) {
+        return function meLnHints(hintClass, isChecked) {
 
             $(window).on('load', function (event) {
 
@@ -64,7 +64,7 @@ define(['jquery'],
                                 'width': maxElementWidth + 'px',
                                 'height':  height + 'px',
                                 'z-index': index * 1000,
-                                'display': 'inline-block',
+                                'display': isChecked ? 'inline-block' : 'none',
                             });
 
                             if (index % 2) {
