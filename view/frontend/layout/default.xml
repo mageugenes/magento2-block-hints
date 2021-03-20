@@ -5,7 +5,8 @@
     </head>
     <body>
         <referenceContainer name="root">
-            <block class="Magento\Framework\View\Element\Template"
+            <block ifconfig="mageugenes_dev/block_hints/enable_block_hints_for_storefront"
+                   class="Magento\Framework\View\Element\Template"
                    name="mageugenes.layoutnames.blocks"
                    template="Mageugenes_BlockHints::blocks.phtml" />
         </referenceContainer>
