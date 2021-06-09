@@ -10,11 +10,16 @@ use Magento\Framework\View\Element\Template;
 ?>
 
 <div id="me-ln-control-block">
-    <div id="me-ln-c-b-title"><?= $escaper->escapeHtml(__('ME BlockHints')) ?></div>
+    <div id="me-ln-c-b-title"><?= $escaper->escapeHtml(__('Mageugenes BlockHints')) ?></div>
 
     <div id="mageugenes-blockhints-switch">
-        <label for="mageugenes-blockhints-switch-input">Enable block hints</label>
-        <input type="checkbox" id ="mageugenes-blockhints-switch-input">
+        <div class="mageugenes-bs-settings" style="display:none;">
+            <label for="mageugenes-blockhints-switch-input"><?= $escaper->escapeHtml(__('Enable block hints')) ?></label>
+            <input type="checkbox" id ="mageugenes-blockhints-switch-input">
+        </div>
+        <div class="mageugenes-bs-loading">
+            <?= $escaper->escapeHtml(__('Loading...')) ?>
+        </div>
     </div>
 </div>
 
@@ -26,13 +31,13 @@ use Magento\Framework\View\Element\Template;
     function(meLnHints, $) {
 
         let showHints = $.cookie('me-ln-wrapper');
-        let isChecked = showHints == 1 ? true : false
+        let isChecked = showHints === '1' ? true : (showHints === '2' ? false : true);
 
         $('#mageugenes-blockhints-switch-input').prop('checked', isChecked);
 
-        meLnHints('debugging-hint-mageugenes-layoutnames', isChecked);
+        meLnHints('debugging-hint-mageugenes-layoutnames');
 
-        $('.me-ln-wrapper').hide();
+        //$('.me-ln-wrapper').hide();
 
         if(isChecked) {
             $('.me-ln-wrapper').show().css('display', 'inline-block');
@@ -40,9 +45,9 @@ use Magento\Framework\View\Element\Template;
             $('.me-ln-wrapper').hide();
         }
 
-        $('body').on('change', '#mageugenes-blockhints-switch-input', function (event) {
+        $('#mageugenes-blockhints-switch-input').on('change', function (event) {
             if(this.checked) {
-                $('.me-ln-wrapper').show().css('display', 'inline-block');;
+                $('.me-ln-wrapper').show().css('display', 'inline-block');
                 $.cookie('me-ln-wrapper', 1);
             } else {
                 $('.me-ln-wrapper').hide();

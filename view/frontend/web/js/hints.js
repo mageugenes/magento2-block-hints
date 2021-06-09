@@ -3,11 +3,15 @@ define(['jquery'],
 
         "use strict";
 
-        return function meLnHints(hintClass, isChecked) {
+        return function meLnHints(hintClass) {
 
-            $(window).on('load', function (event) {
+            $(function () {
 
                 setTimeout(function() {
+
+                    $('#me-ln-control-block .mageugenes-bs-settings').show();
+                    $('#me-ln-control-block .mageugenes-bs-loading').hide();
+
                     $('.' + hintClass).each(function (index) {
 
                         let currentHintBlockBegin = $(this),
@@ -63,19 +67,21 @@ define(['jquery'],
                             $('#me-ln-wrapper-' + blockHintId).css({
                                 'width': maxElementWidth + 'px',
                                 'height':  height + 'px',
-                                'z-index': index * 1000,
-                                'display': isChecked ? 'inline-block' : 'none',
-                            });
+                                'z-index': index * 1000});
 
                             if (index % 2) {
                                 $('#me-ln-wrapper-' + blockHintId).addClass('me-ln-active-invert');
                             }
 
-                            $('body').on('click', '#me-ln-wrapper-' + blockHintId, function (event) {
+                            $('#me-ln-wrapper-' + blockHintId).on('click', function (event) {
 
                                 event.stopPropagation();
 
                                 if ($(this).hasClass('me-ln-active')) {
+                                    $(this).removeClass('me-ln-active');
+
+                                    $('.me-ln-name-template', $(this)).removeClass('me-ln-name-template-show');
+
                                     return false;
                                 }
 
@@ -101,19 +107,6 @@ define(['jquery'],
 
                                 return false;
 
-                            });
-
-                            $('body').on('click', '.me-ln-active#me-ln-wrapper-' + blockHintId, function (event) {
-
-                                event.stopPropagation();
-
-                                let meLnWrapper = $(this);
-
-                                meLnWrapper.removeClass('me-ln-active');
-
-                                $('.me-ln-name-template', $('#me-ln-wrapper-' + blockHintId)).removeClass('me-ln-name-template-show');
-
-                                return false;
                             });
                         }
 
