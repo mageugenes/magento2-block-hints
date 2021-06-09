@@ -37,15 +37,13 @@ use Magento\Framework\View\Element\Template;
 
         meLnHints('debugging-hint-mageugenes-layoutnames');
 
-        //$('.me-ln-wrapper').hide();
-
         if(isChecked) {
             $('.me-ln-wrapper').show().css('display', 'inline-block');
         } else {
             $('.me-ln-wrapper').hide();
         }
 
-        $('#mageugenes-blockhints-switch-input').on('change', function (event) {
+        $('#mageugenes-blockhints-switch-input').on('change', function () {
             if(this.checked) {
                 $('.me-ln-wrapper').show().css('display', 'inline-block');
                 $.cookie('me-ln-wrapper', 1);
