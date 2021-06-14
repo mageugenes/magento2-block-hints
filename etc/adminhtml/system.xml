@@ -14,8 +14,12 @@
                 <field id="version" translate="label comment" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
                     <frontend_model>Mageugenes\BlockHints\Block\Adminhtml\System\Config\Form\Info</frontend_model>
                 </field>
-                <field id="enable_block_hints_for_storefront" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="enable_block_hints_for_storefront" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enable Block Hints for Storefront</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="enable_block_hints_for_adminhtml" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Block Hints for Admin</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>

@@ -7,6 +7,7 @@ namespace Mageugenes\BlockHints\Observer;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\View\Element\AbstractBlock;
+use Mageugenes\BlockHints\Helper\Data as DataHelper;
 
 /**
  *
@@ -16,19 +17,31 @@ use Magento\Framework\View\Element\AbstractBlock;
 class Block implements ObserverInterface
 {
     /**
+     * @var DataHelper
+     */
+    protected DataHelper $_dataHelper;
+
+    public function __construct(
+        DataHelper $dataHelper
+    ) {
+        $this->_dataHelper = $dataHelper;
+    }
+
+    /**
      * @param Observer $observer
      * @return ObserverInterface
      */
     public function execute(Observer $observer): ObserverInterface
     {
-        $block = $observer->getData('block');
-        $transportObject = $observer->getData('transport');
+        if ($this->_dataHelper->getConfigValue($this->_dataHelper::CONFIG_PATH_STOREFRONT) ||
+            $this->_dataHelper->getConfigValue($this->_dataHelper::CONFIG_PATH_ADMINHTML)) {
 
-        $html = $this->getBlockHtml($block, $transportObject->getHtml());
-
-        $transportObject->setHtml($html);
-
-        $observer->setData('transport', $transportObject);
+            $block = $observer->getData('block');
+            $transportObject = $observer->getData('transport');
+            $html = $this->getBlockHtml($block, $transportObject->getHtml());
+            $transportObject->setHtml($html);
+            $observer->setData('transport', $transportObject);
+        }
 
         return $this;
     }
